@@ -23,23 +23,9 @@ namespace graph1
 
         private void generalToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-            var getStartProcessQuery = new GetStartProcessQuery();
-            var getProcessStartInfoQuery = new GetProcessStartInfoQuery();
-            var registerLayoutPluginCommand = new RegisterLayoutPluginCommand(getProcessStartInfoQuery, getStartProcessQuery);
-
-            var wrapper = new GraphGeneration(getStartProcessQuery,
-                                              getProcessStartInfoQuery,
-                                              registerLayoutPluginCommand);
-            String s = "Hello->World";
-            byte[] output = wrapper.GenerateGraph("digraph{" + s + "}", Enums.GraphReturnType.Png);
-
-            using (MemoryStream ms = new MemoryStream(output))
-            {
-                Image i = Image.FromStream(ms);
-                pictureBox1.Image = i;
-            }
-
+            MyGraph mg = new MyGraph(20);
+            mg.genGraph(50);
+            pictureBox1.Image = mg.toImage();
         }
     }
 }
