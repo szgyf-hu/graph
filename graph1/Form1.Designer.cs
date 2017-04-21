@@ -31,6 +31,8 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.generalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.bFSStartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bFSStepToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -38,7 +40,9 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.generalToolStripMenuItem});
+            this.generalToolStripMenuItem,
+            this.bFSStartToolStripMenuItem,
+            this.bFSStepToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(978, 24);
@@ -63,6 +67,20 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
+            // bFSStartToolStripMenuItem
+            // 
+            this.bFSStartToolStripMenuItem.Name = "bFSStartToolStripMenuItem";
+            this.bFSStartToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
+            this.bFSStartToolStripMenuItem.Text = "BFS Start";
+            this.bFSStartToolStripMenuItem.Click += new System.EventHandler(this.bFSStartToolStripMenuItem_Click);
+            // 
+            // bFSStepToolStripMenuItem
+            // 
+            this.bFSStepToolStripMenuItem.Name = "bFSStepToolStripMenuItem";
+            this.bFSStepToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.bFSStepToolStripMenuItem.Text = "BFS step";
+            this.bFSStepToolStripMenuItem.Click += new System.EventHandler(this.bFSStepToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -86,6 +104,8 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem generalToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ToolStripMenuItem bFSStartToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bFSStepToolStripMenuItem;
     }
 }
 

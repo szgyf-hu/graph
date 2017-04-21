@@ -19,13 +19,32 @@ namespace graph1
         public Form1()
         {
             InitializeComponent();
+            mg.genGraph(50);
         }
+
+        MyGraph mg = new MyGraph(40);
 
         private void generalToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MyGraph mg = new MyGraph(20);
-            mg.genGraph(50);
-            pictureBox1.Image = mg.toImage();
+            pictureBox1.Image = mg.toGraphImage();
+            Text =  ";" + mg.DFSBejaras();
+        }
+
+        List<bool> Visited;
+        Queue<int> Nodes;
+
+        private void bFSStartToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            mg.BFSStepInit(out Visited, out Nodes);
+            pictureBox1.Image = mg.BFSStepToImage(Visited, Nodes);
+        }
+
+        private void bFSStepToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!mg.BFSStep(Visited, Nodes))
+                mg.BFSNextComponent(Visited, Nodes);
+
+            pictureBox1.Image = mg.BFSStepToImage(Visited, Nodes);
         }
     }
 }
