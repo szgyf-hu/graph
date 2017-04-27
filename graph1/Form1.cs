@@ -27,7 +27,7 @@ namespace graph1
         private void generalToolStripMenuItem_Click(object sender, EventArgs e)
         {
             pictureBox1.Image = mg.toGraphImage();
-            Text =  ";" + mg.DFSBejaras();
+            Text = ";" + mg.DFSBejaras();
         }
 
         List<bool> Visited;
@@ -45,6 +45,22 @@ namespace graph1
                 mg.BFSNextComponent(Visited, Nodes);
 
             pictureBox1.Image = mg.BFSStepToImage(Visited, Nodes);
+        }
+
+        List<bool> Processed;
+        List<double> Cost;
+        List<int> Path;
+
+        private void dijkstraStartToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            mg.DijkstraInit(out Processed, out Cost, out Path);
+            pictureBox1.Image = mg.DijkstraStepToImage(Processed, Cost, Path);
+        }
+
+        private void dijkstraStepToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            mg.DijkstraStep(Processed, Cost,  Path);
+            pictureBox1.Image = mg.DijkstraStepToImage(Processed, Cost, Path);
         }
     }
 }

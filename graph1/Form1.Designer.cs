@@ -30,9 +30,11 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.generalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.bFSStartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bFSStepToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.dijkstraStartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dijkstraStepToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -42,7 +44,9 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.generalToolStripMenuItem,
             this.bFSStartToolStripMenuItem,
-            this.bFSStepToolStripMenuItem});
+            this.bFSStepToolStripMenuItem,
+            this.dijkstraStartToolStripMenuItem,
+            this.dijkstraStepToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(978, 24);
@@ -55,17 +59,6 @@
             this.generalToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
             this.generalToolStripMenuItem.Text = "general";
             this.generalToolStripMenuItem.Click += new System.EventHandler(this.generalToolStripMenuItem_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Fuchsia;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 24);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(978, 522);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
             // 
             // bFSStartToolStripMenuItem
             // 
@@ -80,6 +73,31 @@
             this.bFSStepToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.bFSStepToolStripMenuItem.Text = "BFS step";
             this.bFSStepToolStripMenuItem.Click += new System.EventHandler(this.bFSStepToolStripMenuItem_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Fuchsia;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 24);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(978, 522);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
+            // dijkstraStartToolStripMenuItem
+            // 
+            this.dijkstraStartToolStripMenuItem.Name = "dijkstraStartToolStripMenuItem";
+            this.dijkstraStartToolStripMenuItem.Size = new System.Drawing.Size(82, 20);
+            this.dijkstraStartToolStripMenuItem.Text = "Dijkstra Start";
+            this.dijkstraStartToolStripMenuItem.Click += new System.EventHandler(this.dijkstraStartToolStripMenuItem_Click);
+            // 
+            // dijkstraStepToolStripMenuItem
+            // 
+            this.dijkstraStepToolStripMenuItem.Name = "dijkstraStepToolStripMenuItem";
+            this.dijkstraStepToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
+            this.dijkstraStepToolStripMenuItem.Text = "Dijkstra Step";
+            this.dijkstraStepToolStripMenuItem.Click += new System.EventHandler(this.dijkstraStepToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -106,6 +124,8 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolStripMenuItem bFSStartToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bFSStepToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dijkstraStartToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dijkstraStepToolStripMenuItem;
     }
 }
 

@@ -246,5 +246,92 @@ namespace graph1
 
             return komponensekszama;
         }
+
+        public void DijkstraInit(out List<bool> Processed, out List<double> Cost, out List<int> Path)
+        {
+            Processed = new List<bool>(new bool[this.NodesCount]);
+            Cost = new List<double>(new double[this.NodesCount]);
+            Path = new List<int>(new int[this.NodesCount]);
+
+            for (int i = 0; i < Cost.Count; i++)
+            {
+                Processed[i] = false;
+                Cost[i] = double.PositiveInfinity;
+                Path[i] = -1;
+            }
+
+            Cost[0] = 0;
+        }
+
+        public void DijkstraStep(List<bool> Processed, List<double> Cost, List<int> Path)
+        {
+            double min = double.PositiveInfinity;
+            int minindex = NodesCount;
+
+            // keresés tétele
+            // keressük az első még fel nem dolgozott csomópontot
+            for (int i = 0; i < NodesCount; i++)
+                if (Processed[i] == false)
+                {
+                    min = Cost[i];
+                    minindex = i;
+                    break;
+                }
+
+            if (minindex == NodesCount)
+                return;
+
+            // minimumkeresés tétele
+            for (int i = minindex + 1; i < Cost.Count; i++)
+                if (Cost[i] < min && Processed[i] == false)
+                {
+                    min = Cost[i];
+                    minindex = i;
+                }
+
+            for (int i = 0; i < NodesCount; i++)
+                if (minindex != i)
+                {
+                    if (AdjMatrix[minindex, i] != double.PositiveInfinity)
+                    {
+                        double koltseg =
+                            Cost[minindex]  // jelenlegi csúcspontba utazás költsége
+                            + AdjMatrix[minindex, i]; // i. csúcspontba történő utazás költsége
+
+                        if (Cost[i] > koltseg)
+                        {
+                            Cost[i] = koltseg;
+                            Path[i] = minindex;
+                        }
+                    }
+                }
+
+            Processed[minindex] = true;
+        }
+
+        public Image DijkstraStepToImage(List<bool> Processed, List<double> Cost, List<int> Path)
+        {
+            StringBuilder sb = new StringBuilder("graph{");
+
+            for (int i = 0; i < NodesCount; i++)
+            {
+                if (Processed[i])
+                    sb.AppendLine(String.Format("n{0} [color = red];", i));
+                else
+                    sb.AppendLine(String.Format("n{0};", i));
+            }
+
+            for (int n1 = 0; n1 < NodesCount; n1++)
+                for (int n2 = n1 + 1; n2 < NodesCount; n2++)
+                    if (AdjMatrix[n1, n2] < double.PositiveInfinity)
+                        if (Path[n1] == n2 || Path[n2] == n1)
+                            sb.AppendLine(String.Format("n{0}--n{1} [color=red];", n1, n2));
+                        else
+                            sb.AppendLine(String.Format("n{0}--n{1};", n1, n2));
+
+            sb.AppendLine("}");
+
+            return StringToImage(sb.ToString());
+        }
     }
 }
