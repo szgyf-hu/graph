@@ -128,6 +128,8 @@ namespace graph1
                                               getProcessStartInfoQuery,
                                               registerLayoutPluginCommand);
 
+            wrapper.RenderingEngine = Enums.RenderingEngine.Fdp;
+
             byte[] output = wrapper.GenerateGraph(s, Enums.GraphReturnType.Png);
 
             using (MemoryStream ms = new MemoryStream(output))
@@ -150,12 +152,13 @@ namespace graph1
                 {
                     int idx = Nodes.ToList().IndexOf(i);
 
-                    if (idx > -1)
+                    switch (idx)
                     {
-                        sb.AppendLine("[color = green];");
+                        case -1: sb.AppendLine(";"); break;
+                        case 0: sb.AppendLine("[color = yellow];"); break;
+                        //case 1: sb.AppendLine("[color = yellow];"); break;
+                        default: sb.AppendLine("[color = green];"); break;
                     }
-                    else
-                        sb.AppendLine(";");
                 }
             }
 
@@ -187,7 +190,7 @@ namespace graph1
                 if (i != n_index) // Nem önmaga
                     if (!Visited[i]) // Vigyáz arra hogy ciklikus gráf esetében ne legyen végtelen ciklus, ne térjünk vissza már feldolgozott csomóponthoz
                         if (AdjMatrix[n_index, i] != Double.PositiveInfinity)
-                            if (Nodes.ToList().IndexOf(i)<0)
+                            if (Nodes.ToList().IndexOf(i) < 0)
                                 Nodes.Enqueue(i);
 
             return Nodes.Count > 0;
